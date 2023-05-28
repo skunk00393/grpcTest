@@ -29,7 +29,7 @@ func MarkItem(id int32) string {
 	if e != nil {
 		return "Error while altering"
 	}
-	return "ToDo item name altered"
+	return "ToDo item status altered"
 }
 
 func CreateItem(id int32, item *toDoItem.ListItem) string {
