@@ -1,0 +1,53 @@
+syntax = "proto3";
+
+option go_package = "/toDoList";
+
+service listService{
+    rpc CreateNew(NewListRequest) returns (NewListResponse) {}
+    rpc GetList(GetListRequest) returns (GetListResponse) {}
+    rpc UpdateList(UpdateListRequest) returns (UpdateListResponse) {}
+    rpc DeleteList(DeleteListRequest) returns (DeleteListResponse) {}
+}
+
+message NewListRequest {
+    string name = 1;
+    string created_on = 2;
+}
+
+message NewListResponse {
+    string response = 3;
+}
+
+message GetListRequest{
+    int32 id = 1;
+}
+
+message GetListResponse{
+    repeated Item Items = 2;
+}
+
+message Item{
+    int32 id = 1;
+    string name = 2;
+    string description = 3;
+    string created_on = 4;
+    bool is_finished = 5;
+    int32 to_do_list_id = 6;
+}
+
+message UpdateListRequest {
+    int32 id = 1;
+    string newName = 2;
+}
+
+message UpdateListResponse {
+    string response = 3;
+}
+
+message DeleteListRequest {
+    int32 id = 1;
+}
+
+message DeleteListResponse {
+    string response = 2;
+}

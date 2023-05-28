@@ -1,0 +1,49 @@
+syntax = "proto3";
+
+option go_package = "/toDoItem";
+
+service itemService{
+    rpc CreateNewItem(NewItemRequest) returns (NewItemResponse) {}
+    rpc UpdateItem(UpdateItemRequest) returns (UpdateItemResponse) {}
+    rpc DeleteItem(DeleteItemRequest) returns (DeleteItemResponse) {}
+    rpc MarkItem(MarkItemRequest) returns (MarkItemResponse) {}
+}
+
+message NewItemRequest {
+    int32 listId = 1;
+    ListItem item = 2;
+}
+
+message NewItemResponse {
+    string response = 3;
+}
+
+message ListItem{
+    string name = 1;
+    string description = 2;
+}
+
+message UpdateItemRequest {
+    int32 id = 1;
+    string newName = 2;
+}
+
+message UpdateItemResponse {
+    string response = 3;
+}
+
+message DeleteItemRequest {
+    int32 id = 1;
+}
+
+message DeleteItemResponse {
+    string response = 2;
+}
+
+message MarkItemRequest {
+    int32 id = 1;
+}
+
+message MarkItemResponse {
+    string response = 2;
+}
