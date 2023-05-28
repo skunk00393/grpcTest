@@ -1,10 +1,13 @@
 package main
 
-import "toDoApp/protos/toDoList"
+import (
+	"time"
+	"toDoApp/protos/toDoList"
+)
 
-func CreateNewList(name string, created_on string) string {
+func CreateNewList(name string) string {
 	sqlStatement := `insert into to_do_list("name","created_on") values($1,$2)`
-	_, e := db.Exec(sqlStatement, name, created_on)
+	_, e := db.Exec(sqlStatement, name, time.Now())
 	if e != nil {
 		return "Error while inserting"
 	}

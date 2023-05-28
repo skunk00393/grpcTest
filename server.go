@@ -25,7 +25,7 @@ type serverItem struct {
 
 func (s *serverList) CreateNew(ctx context.Context, req *toDoList.NewListRequest) (*toDoList.NewListResponse, error) {
 	return &toDoList.NewListResponse{
-		Response: fmt.Sprint(CreateNewList(req.Name, req.CreatedOn)),
+		Response: fmt.Sprint(CreateNewList(req.Name)),
 	}, nil
 }
 

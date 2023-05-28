@@ -1,6 +1,9 @@
 package main
 
-import "toDoApp/protos/toDoItem"
+import (
+	"time"
+	"toDoApp/protos/toDoItem"
+)
 
 func DeleteItem(id int32) string {
 	sqlStatement := `delete from to_do_item where id = $1`
@@ -31,7 +34,7 @@ func MarkItem(id int32) string {
 
 func CreateItem(id int32, item *toDoItem.ListItem) string {
 	sqlStatement := `insert into to_do_item ("name","description","created_on","to_do_list_id") values($1,$2,$3,$4)`
-	_, e := db.Exec(sqlStatement, item.Name, item.Description, "2023-02-24 12:50:13.873831", id)
+	_, e := db.Exec(sqlStatement, item.Name, item.Description, time.Now(), id)
 	if e != nil {
 		return e.Error()
 	}

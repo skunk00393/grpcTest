@@ -11,11 +11,10 @@ service listService{
 
 message NewListRequest {
     string name = 1;
-    string created_on = 2;
 }
 
 message NewListResponse {
-    string response = 3;
+    string response = 2;
 }
 
 message GetListRequest{
